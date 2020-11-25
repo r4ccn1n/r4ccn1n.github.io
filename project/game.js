@@ -186,6 +186,7 @@ function preload() {
   sfxPlayed = false
   menuMusicPlayed = false
   tutMusicPlayed = false
+  masterVolume(0.2)
 
 
   astroList = [femaleAstronaut1, femaleAstronaut2, femaleAstronaut3, maleAstronaut1, maleAstronaut2, maleAstronaut3];
