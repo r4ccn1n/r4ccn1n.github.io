@@ -1,10 +1,8 @@
 
-///[REFINEMENTS]///
-/// include afrikaans
-/// achievements
-/// pilots???? 
-///CODE OXYGEN SYSTEM FOR REPLAYABILITY
-
+///[REFINEMENTS]/// 
+///CODE TIMER/ OXYGEN METER
+/// ADD AUSTRALIA, CHINA, INDIA, ETHIOPIA, EGYPT
+//music by: Damiano Baldoni (tutorial), 
 
 
 
@@ -113,7 +111,18 @@ var score
 var scoreAdded = false
 var timeTaken 
 var tempTime
-
+var inTutorial
+//sound variables
+var correctSound
+var incorrectSound
+var menuMusic
+var gameMusic
+var tutMusic
+masterVolume(0.5)
+var sfxPlayed = false
+var bgmusicPlayed = false
+var menuMusicPlayed = false
+var tutMusicPlayed = false
 
 function preload() {
   
@@ -166,6 +175,18 @@ function preload() {
   southAfricaGreen = loadImage('assets/countries/green_south_africa.png')
   britainGreen = loadImage('assets/countries/green_uk.png')
   greyMap = loadImage('assets/grey.png')
+  //images stop here
+  correctSound = loadSound("assets/Music and Sounds/correctSound.mp3")
+  incorrectSound = loadSound("assets/Music and Sounds/incorrectSound.wav")
+  menuMusic = loadSound("assets/Music and Sounds/theLift.mp3")
+  gameMusic = loadSound("assets/Music and Sounds/Krazoa.mp3")
+  tutMusic = loadSound("assets/Music and Sounds/tutorialMusic.mp3")
+
+  bgmusicPlayed = false
+  sfxPlayed = false
+  menuMusicPlayed = false
+  tutMusicPlayed = false
+
 
   astroList = [femaleAstronaut1, femaleAstronaut2, femaleAstronaut3, maleAstronaut1, maleAstronaut2, maleAstronaut3];
 }
@@ -224,6 +245,14 @@ function draw() {
   
   clear();
   if (mode == 0) { //title screen displayed until either option is picked
+    inMenu = true;
+    inTutorial = false
+    if(menuMusicPlayed == false){
+      menuMusic.loop()
+      gameMusic.stop()
+      tutMusic.stop()
+      menuMusicPlayed = true
+    }
     astronautChosen = false;
     flagChosen = false;
     flagChosenBool = false;
@@ -234,7 +263,8 @@ function draw() {
     timeTaken = 0
 
     text('Press "ENTER" to begin game',20,20);
-    text('Press "R" to enter tutorial',50,50);
+    text('Press "R" to enter tutorial',20,50);
+    text('Please click on the game window to enable sound',20,80)
     
     flagList = ["americaFlag", "brazilFlag", "canadaFlag", "englandFlag", "franceFlag", "germanyFlag", "italyFlag", "japanFlag", "russiaFlag", "southAfricaFlag"]
    
@@ -297,10 +327,15 @@ function draw() {
       //text: flagDict.americaFlag
     //}
    //}
-    inMenu = true;
+    
   }
   if (mode == 1) { //game code goes here
     background(220);
+    inMenu = false;
+    if (correctSound.isLoaded == false && incorrectSound.isLoaded == false){
+      correctSound.play()
+      incorrectSound.play()
+    }
 
    
 
@@ -312,6 +347,14 @@ function draw() {
       }
     
     if (gamesCompleted <= 9){
+
+      if( bgmusicPlayed == false){
+        gameMusic.loop()
+        menuMusic.stop(
+          )
+        console.log("i am running this code")
+        bgmusicPlayed = true
+      }
       tempTime ++
       timeTaken = round(tempTime/60)
      
@@ -490,10 +533,18 @@ function draw() {
       //image(correctFlag.highlight);
       if(correctFlag == flagChosen){
         correct = true
+        if (sfxPlayed === false){
+          correctSound.play()
+         sfxPlayed = true
+        }
         text("correct! the country was: "+flag.name+" press SPACE to continue",300,300);
       }
       if(flagChosen != correctFlag){
         correct = false
+        if (sfxPlayed === false){
+          incorrectSound.play()
+         sfxPlayed = true
+        }
         image(countryUserSelected,0,0);
         text("incorrect, the correct country was: "+flag.name+" press SPACE to continue",300,300);
       }
@@ -508,11 +559,14 @@ function draw() {
       }
 
 
-      if(keyIsDown(32)){
+      if(keyIsDown(32) && flagChosenBool == true){
         flagChosenBool = false
         flagChosen = false
         astronautChosen = false
         scoreAdded = false
+       sfxPlayed = false
+        correctSound.stop()
+        incorrectSound.stop()
       }
      
    
@@ -539,7 +593,14 @@ function draw() {
   }
   if (mode == 2) { //tutorial code goes here
     background(220)
-    
+    inMenu = false
+    if (tutMusicPlayed == false){
+      tutMusic.loop()
+      menuMusic.stop()
+      tutMusicPlayed = true
+    }
+    inMenu = false
+    inTutorial = true
     text('Press "ESCAPE" to go back',20,20)//alow user to return to menu
     
     text('Astronauts aboard the ISS need your help getting home! sort them using your knowledge of flags and countries do it as quickly as you can!',200,300);//script for tutorial goes here
@@ -547,17 +608,25 @@ function draw() {
   if (inMenu == true) { //only allowing user to access game or tutorial whilst in menu
 
     if(keyIsDown(ENTER)) { //enter to start game
+      bgmusicPlayed = false
+
       mode = 1;
-      inMenu = false;
+      
+      
     }
     if(keyIsDown(82)) { //r to start tutorial
+      tutMusicPlayed = false
+
       mode = 2;
-      inMenu = false;
+      
     }
   }
-  if(keyIsDown(27)) { //escape to get back to main menu 
+  if(keyIsDown(27) && inMenu == false) { //escape to get back to main menu 
+    menuMusicPlayed = false
+
     mode = 0;
-    inMenu = true
+    
+    
   }
 }
 
