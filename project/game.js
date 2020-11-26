@@ -14,6 +14,7 @@ var greenMap;
 var redMap;
 var blueMap;
 var greyMap;
+var tutorialScreen
 
 var speechBubble;     
 
@@ -107,7 +108,7 @@ var flagChosenBool = false
 var countryUserSelected
 var gamesCompleted = 0 
 var gameCompletesAdded
-var score 
+var score = 10
 var scoreAdded = false
 var timeTaken 
 var tempTime
@@ -123,6 +124,7 @@ var sfxPlayed = false
 var bgmusicPlayed = false
 var menuMusicPlayed = false
 var tutMusicPlayed = false
+
 
 function preload() {
   
@@ -175,6 +177,7 @@ function preload() {
   southAfricaGreen = loadImage('assets/countries/green_south_africa.png')
   britainGreen = loadImage('assets/countries/green_uk.png')
   greyMap = loadImage('assets/grey.png')
+  tutorialScreen = loadImage('assets/tutorialScreen.PNG')
   //images stop here
   correctSound = loadSound("assets/Music and Sounds/correctSound.mp3")
   incorrectSound = loadSound("assets/Music and Sounds/incorrectSound.wav")
@@ -587,13 +590,14 @@ function draw() {
   }
   else{
 
-    text("Game Over! You got "+score+"/10 flags right! in "+timeTaken+" seconds",300,300);
+    text("Game Over! You got "+score+"/10 flags right! in "+timeTaken+" seconds, you can be faster than that",300,300);
 
     text('Press "ESCAPE" to go back',20,20);
   }
   }
   if (mode == 2) { //tutorial code goes here
     background(220)
+    image(tutorialScreen,500,10)
     inMenu = false
     if (tutMusicPlayed == false){
       tutMusic.loop()
@@ -604,7 +608,8 @@ function draw() {
     inTutorial = true
     text('Press "ESCAPE" to go back',20,20)//alow user to return to menu
     
-    text('Astronauts aboard the ISS need your help getting home! sort them using your knowledge of flags and countries do it as quickly as you can!',200,300);//script for tutorial goes here
+    text('Astronauts aboard the ISS need your help getting home! sort them using your knowledge of flags and countries do it as quickly as you can!',50,120);
+    text('using your cursor, click on the country belonging to the flag on the map!',50,150)//script for tutorial goes here
   }
   if (inMenu == true) { //only allowing user to access game or tutorial whilst in menu
 
