@@ -403,7 +403,7 @@ function draw() {
     if(pointer.overlap(russiaBlock1) && flagChosenBool == false){
       image(russiaHighlighted,0,0);
       text("Russia",880,70)
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
           print("russia")
           flagChosen = "Russia"
           flagChosenBool = true
@@ -415,7 +415,7 @@ function draw() {
     if(pointer.overlap(japanBlock1) && flagChosenBool == false){
       image(japanHighlighted,0,0);
       image(japanTag,1000,165);
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
         print("japan")
         flagChosen = "Japan"
         flagChosenBool = true
@@ -427,7 +427,7 @@ function draw() {
     if(pointer.overlap(southAfricaBlock1) && flagChosenBool == false){
       image(southAfricaHighlighted,0,0);
       image(southAfricaTag,590,380);
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
        print("south africa")
        flagChosen = "South Africa"
        flagChosenBool = true
@@ -443,7 +443,7 @@ function draw() {
     if(pointer.overlap(americaGroup) && flagChosenBool == false){
       image(americaHighlighted,0,0);
       text("America",245,140)
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
         print("america")
         flagChosen = "America"
         flagChosenBool = true
@@ -454,7 +454,7 @@ function draw() {
     if(pointer.overlap(canadaBlock1) && flagChosenBool == false){
       image(canadaHighlighted,0,0)
       text("Canada",215,80)
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
         print("canada")
         flagChosen = "Canada"
         flagChosenBool = true
@@ -465,7 +465,7 @@ function draw() {
     if(pointer.overlap(franceBlock1) && flagChosenBool == false){
       image(franceHighlighted,0,0);
       image(franceTag,450,70);
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
         print("france")
         flagChosen = "France"
         flagChosenBool = true
@@ -476,7 +476,7 @@ function draw() {
     if(pointer.overlap(britainBlock1) && flagChosenBool == false){
       image(britainHighlighted,0,0);
       image(britainTag,450,70);
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
         print("britain")
         flagChosen = "United Kingdom"
         flagChosenBool = true
@@ -491,7 +491,7 @@ function draw() {
     if(pointer.overlap(brazilGroup) && flagChosenBool == false){
       image(brazilHighlighted,0,0);
       text("Brazil",400,300)
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
         print("brazil")
         flagChosen = "Brazil"
         flagChosenBool = true
@@ -502,7 +502,7 @@ function draw() {
     if(pointer.overlap(italyBlock1) && flagChosenBool == false){
       image(italyHighlighted,0,0);
       image(italyTag,450,70);
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
         print("italy")
         flagChosen = "Italy"
         flagChosenBool = true
@@ -513,7 +513,7 @@ function draw() {
     if(pointer.overlap(germanyBlock1) && flagChosenBool == false){
       image(germanyHighlighted,0,0);
       image(germanyTag,450,70);
-      if(mouseIsPressed){
+      if(mouseIsPressed  && keyIsDown(32) == false){
         print("germany")
         flagChosen = "Germany"
         flagChosenBool = true
@@ -563,7 +563,7 @@ function draw() {
       }
 
 
-      if(keyIsDown(32) && flagChosenBool == true){
+      if(keyIsDown(32) && flagChosenBool == true && mouseIsPressed == false){
         flagChosenBool = false
         flagChosen = false
         astronautChosen = false
