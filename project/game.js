@@ -42,6 +42,16 @@ var astroList;
 var astronaut;
 var astronautChosen;
 //flags
+var australiaGreen
+var indiaGreen
+var chinaGreen
+var ethiopiaGreen
+var egyptGreen
+var australiaFlag
+var indiaFlag
+var chinaFlag
+var ethiopiaFlag
+var egyptFlag
 var americaFlag;
 var brazilFlag;
 var canadaFlag;
@@ -57,6 +67,15 @@ var flagChosen;
 var flag;
 var flagSprite;
 var country;
+var australiaBlock1;
+var indiaBlock1;
+var indiBlock2;
+var chinaBlock1;
+var chinaBlock2;
+var chinaBlock3;
+var chinaBlock4;
+var ethiopiaBlock1;
+var egyptBlock1;
 var russiaBlock1;
 var japanBlock1;
 var southAfricaBlock1;
@@ -70,6 +89,11 @@ var brazilBlock2;
 var italyBlock1;
 var germanyBlock1;
 //Highlighted versions for hovering over + tags
+var australiaHighlighted
+var indiaHighlighted
+var chinaHighlighted
+var ethiopiaHighlighted
+var egyptHighlighted
 var brazilHighlighted
 var canadaHighlighted
 var franceHighlighted
@@ -119,7 +143,6 @@ var incorrectSound
 var menuMusic
 var gameMusic
 var tutMusic
-masterVolume(0.5)
 var sfxPlayed = false
 var bgmusicPlayed = false
 var menuMusicPlayed = false
@@ -137,6 +160,11 @@ function preload() {
   worldMap = loadImage('assets/worldMap.jpg');
   speechBubble = loadImage('assets/speechBubble.png');
   rocket = loadImage('assets/rocket.png');
+  australiaFlag = loadImage('assets/flags/australiaFlag.png')
+  indiaFlag = loadImage('assets/flags/indiaFlag.png')
+  chinaFlag = loadImage('assets/flags/chinaFlag.png')
+  ethiopiaFlag = loadImage('assets/flags/ethiopiaFlag.png')
+  egyptFlag = loadImage('assets/flags/egyptFlag.png')
   americaFlag = loadImage('assets/flags/americaFlag.png');
   brazilFlag = loadImage('assets/flags/brazilFlag.png');
   canadaFlag = loadImage('assets/flags/canadaFlag.png');
@@ -146,6 +174,11 @@ function preload() {
   italyFlag = loadImage('assets/flags/italyFlag.png');
   japanFlag = loadImage('assets/flags/japanFlag.png');
   russiaFlag = loadImage('assets/flags/russiaFlag.png');
+  australiaHighlighted = loadImage('assets/countries/australia.png');
+  indiaHighlighted = loadImage('assets/countries/india.png');
+  chinaHighlighted = loadImage('assets/countries/china.png');
+  ethiopiaHighlighted = loadImage('assets/countries/ethiopia.png');
+  egyptHighlighted = loadImage('assets/countries/egypt.png');
   southAfricaFlag = loadImage('assets/flags/southAfricaFlag.png');
   americaHighlighted = loadImage('assets/countries/usa.png');
   brazilHighlighted = loadImage('assets/countries/brazil.png');
@@ -154,7 +187,7 @@ function preload() {
   germanyHighlighted = loadImage('assets/countries/germany.png');
   italyHighlighted = loadImage('assets/countries/italy.png');
   japanHighlighted = loadImage('assets/countries/japan.png');
-  russiaHighlighted = loadImage('assets/countries/russia.png')
+  russiaHighlighted = loadImage('assets/countries/russia.png');
   southAfricaHighlighted = loadImage('assets/countries/s._africa.png');
   britainHighlighted = loadImage('assets/countries/uk.png');
   greenMap = loadImage('assets/green.png');
@@ -166,18 +199,23 @@ function preload() {
   japanTag = loadImage('assets/JapanTag.PNG');
   southAfricaTag = loadImage('assets/SouthAfricaTag.PNG');
   britainTag = loadImage('assets/UnitedKingdomTag.PNG');
-  americaGreen = loadImage('assets/countries/green_usa.png')
-  brazilGreen = loadImage('assets/countries/green_brazil.png')
-  canadaGreen = loadImage('assets/countries/green_canada.png')
-  franceGreen = loadImage('assets/countries/green_france_.png')
-  germanyGreen = loadImage('assets/countries/green_germany.png')
-  italyGreen = loadImage('assets/countries/green_italy.png')
-  japanGreen = loadImage('assets/countries/green_japan.png')
-  russiaGreen = loadImage('assets/countries/green_russia.png')
-  southAfricaGreen = loadImage('assets/countries/green_south_africa.png')
-  britainGreen = loadImage('assets/countries/green_uk.png')
-  greyMap = loadImage('assets/grey.png')
-  tutorialScreen = loadImage('assets/tutorialScreen.PNG')
+  americaGreen = loadImage('assets/countries/green_usa.png');
+  brazilGreen = loadImage('assets/countries/green_brazil.png');
+  canadaGreen = loadImage('assets/countries/green_canada.png');
+  franceGreen = loadImage('assets/countries/green_france_.png');
+  germanyGreen = loadImage('assets/countries/green_germany.png');
+  italyGreen = loadImage('assets/countries/green_italy.png');
+  japanGreen = loadImage('assets/countries/green_japan.png');
+  russiaGreen = loadImage('assets/countries/green_russia.png');
+  southAfricaGreen = loadImage('assets/countries/green_south_africa.png');
+  britainGreen = loadImage('assets/countries/green_uk.png');
+  australiaGreen = loadImage('assets/countries/green_australia.png')
+  indiaGreen = loadImage('assets/countries/green_india.png')
+  chinaGreen = loadImage('assets/countries/green_china.png')
+  ethiopiaGreen = loadImage('assets/countries/green_ethiopia.png')
+  egyptGreen = loadImage('assets/countries/green_egypt.png')
+  greyMap = loadImage('assets/grey.png');
+  tutorialScreen = loadImage('assets/tutorialScreen.PNG');
   //images stop here
   correctSound = loadSound("assets/Music and Sounds/correctSound.mp3")
   incorrectSound = loadSound("assets/Music and Sounds/incorrectSound.wav")
@@ -243,6 +281,30 @@ function setup() {
   germanyBlock1 = createSprite(605,103,20,20);
   germanyBlock1.visible = false;
 
+  ethiopiaBlock1 = createSprite(700,240,40,40);
+  ethiopiaBlock1.visible = false;
+
+  egyptBlock1 = createSprite(665,180,32,32);
+  egyptBlock1.visible = false;
+
+  indiaBlock1 = createSprite(820,190,60,30);
+  indiaBlock2 = createSprite(815,200,22.5,80);
+  indiaBlock1.visible = false
+  indiaBlock2.visible =  false
+
+  australiaBlock1 = createSprite(995,350,121,95);
+  australiaBlock1.visible = false
+
+  chinaBlock1 = createSprite(855,145,50,55);
+  chinaBlock2 = createSprite(915,160,70,70);
+  chinaBlock3 = createSprite(965,120,35,35);
+  chinaBlock4 = createSprite(820,140,20,20);
+  chinaBlock1.visible = false
+  chinaBlock2.visible = false
+  chinaBlock3.visible = false
+  chinaBlock4.visible = false
+
+
 }
 
 function draw() {
@@ -262,7 +324,7 @@ function draw() {
     flagChosenBool = false;
     background(220);
     gamesCompleted = 0
-    score = 10
+    score = 15
     tempTime = 0
     timeTaken = 0
 
@@ -270,7 +332,7 @@ function draw() {
     text('Press "R" to enter tutorial',20,50);
     text('Please click on the game window to enable sound',20,80)
     
-    flagList = ["americaFlag", "brazilFlag", "canadaFlag", "englandFlag", "franceFlag", "germanyFlag", "italyFlag", "japanFlag", "russiaFlag", "southAfricaFlag"]
+    flagList = ["americaFlag", "brazilFlag", "canadaFlag", "englandFlag", "franceFlag", "germanyFlag", "italyFlag", "japanFlag", "russiaFlag", "southAfricaFlag","ethiopiaFlag","egyptFlag","indiaFlag","australiaFlag","chinaFlag"]
    
     flagDict = {
       americaFlag: {
@@ -322,7 +384,32 @@ function draw() {
         name: "South Africa",
         img: southAfricaFlag,
         highlight: southAfricaGreen
-      } 
+      },
+      ethiopiaFlag: {
+        name: "Ethiopia",
+        img: ethiopiaFlag,
+        highlight: ethiopiaGreen
+      },
+      egyptFlag: {
+        name: "Egypt",
+        img: egyptFlag,
+        highlight: egyptGreen
+      },
+      indiaFlag: {
+        name: "India",
+        img: indiaFlag,
+        highlight: indiaGreen
+      },
+      australiaFlag: {
+        name: "Australia",
+        img: australiaFlag,
+        highlight: australiaGreen
+      },
+      chinaFlag: {
+        name: "China",
+        img: chinaFlag,
+        highlight: chinaGreen
+      }
     }
    usedFlags = []
    //var object = {
@@ -350,7 +437,7 @@ function draw() {
         scoreAdded = true
       }
     
-    if (gamesCompleted <= 9){
+    if (gamesCompleted <= 14){
 
       if( bgmusicPlayed == false){
         gameMusic.loop()
@@ -393,12 +480,79 @@ function draw() {
    //world map image and resolution set 
    //var correctFlag = flagDict.flag;
    //picking which gender to draw
-   /*text('flag: '+correctFlag,500,400);
+   //text('flag: '+correctFlag,500,400);
    text('mouseY:'+mouseY+' mouseX: '+mouseX,500,425);
-   text('games completed: '+gamesCompleted,500,375)*/ 
-   //text('Gender numba: '+maleOrFemale,500,475);
+   //text('games completed: '+gamesCompleted,500,375) 
+   ///text('Gender numba: '+maleOrFemale,500,475);
    //text('Ethnicity numba: '+astroEthnicity,500,450);
+    drawSprite(chinaBlock1);
+    drawSprite(chinaBlock2);
+    drawSprite(chinaBlock3);
+    drawSprite(chinaBlock4);
+    let chinaGroup = new Group();
+    chinaGroup.add(chinaBlock1)
+    chinaGroup.add(chinaBlock2)
+    chinaGroup.add(chinaBlock3)
+    chinaGroup.add(chinaBlock4)
+    if(pointer.overlap(chinaGroup) && flagChosenBool == false){
+      image(chinaHighlighted,0,0);
+      if(mouseIsPressed && keyIsDown(32) == false){
+        print("china")
+        flagChosen = "China"
+        flagChosenBool = true
+        countryUserSelected = chinaHighlighted
+      }
+    }
 
+
+
+    drawSprite(australiaBlock1);
+    if(pointer.overlap(australiaBlock1) && flagChosenBool == false){
+      image(australiaHighlighted,0,0)
+      if(mouseIsPressed && keyIsDown(32) == false){
+        print("australia")
+        flagChosen = "Australia"
+        flagChosenBool = true
+        countryUserSelected = australiaHighlighted
+      }
+    }
+
+    drawSprite(indiaBlock1);
+    drawSprite(indiaBlock2);
+    let indiaGroup = new Group();
+    indiaGroup.add(indiaBlock1)
+    indiaGroup.add(indiaBlock2)
+    if(pointer.overlap(indiaGroup) && flagChosenBool == false){
+      image(indiaHighlighted,0,0)
+      if(mouseIsPressed && keyIsDown(32) == false){
+        print("india")
+        flagChosen = "India"
+        flagChosenBool = true
+        countryUserSelected = indiaHighlighted
+      }
+    }
+
+    drawSprite(egyptBlock1)
+    if(pointer.overlap(egyptBlock1) && flagChosenBool == false){
+      image(egyptHighlighted,0,0)
+      if(mouseIsPressed && keyIsDown(32) == false){
+        print("egypt")
+        flagChosen = "Egypt"
+        flagChosenBool = true
+        countryUserSelected = egyptHighlighted
+      }
+    }  
+
+    drawSprite(ethiopiaBlock1)
+    if(pointer.overlap(ethiopiaBlock1) && flagChosenBool == false){
+      image(ethiopiaHighlighted,0,0)
+      if(mouseIsPressed && keyIsDown(32) == false){
+        print("ethiopia")
+        flagChosen = "Ethiopia"
+        flagChosenBool = true
+        countryUserSelected = ethiopiaHighlighted
+      }
+    } 
 
     if(pointer.overlap(russiaBlock1) && flagChosenBool == false){
       image(russiaHighlighted,0,0);
@@ -590,7 +744,7 @@ function draw() {
   }
   else{
 
-    text("Game Over! You got "+score+"/10 flags right! in "+timeTaken+" seconds, you can be faster than that",300,300);
+    text("Game Over! You got "+score+"/15 flags right! in "+timeTaken+" seconds, you can be faster than that",300,300);
 
     text('Press "ESCAPE" to go back',20,20);
   }
