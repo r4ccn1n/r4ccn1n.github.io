@@ -116,6 +116,9 @@ var britainGreen
 var americaGreen
 
 var americaSprite
+var ethiopiaTag 
+var egyptTag
+var indiaTag
 var franceTag
 var germanyTag
 var italyTag
@@ -199,6 +202,9 @@ function preload() {
   japanTag = loadImage('assets/JapanTag.PNG');
   southAfricaTag = loadImage('assets/SouthAfricaTag.PNG');
   britainTag = loadImage('assets/UnitedKingdomTag.PNG');
+  ethiopiaTag = loadImage('assets/ethiopiaTag.PNG')
+  egyptTag = loadImage('assets/egyptTag.PNG')
+  indiaTag = loadImage('assets/IndiaTag.PNG')
   americaGreen = loadImage('assets/countries/green_usa.png');
   brazilGreen = loadImage('assets/countries/green_brazil.png');
   canadaGreen = loadImage('assets/countries/green_canada.png');
@@ -481,7 +487,7 @@ function draw() {
    //var correctFlag = flagDict.flag;
    //picking which gender to draw
    //text('flag: '+correctFlag,500,400);
-   //text('mouseY:'+mouseY+' mouseX: '+mouseX,500,425);
+   text('mouseY:'+mouseY+' mouseX: '+mouseX,500,425);
    //text('games completed: '+gamesCompleted,500,375) 
    ///text('Gender numba: '+maleOrFemale,500,475);
    //text('Ethnicity numba: '+astroEthnicity,500,450);
@@ -496,6 +502,7 @@ function draw() {
     chinaGroup.add(chinaBlock4)
     if(pointer.overlap(chinaGroup) && flagChosenBool == false){
       image(chinaHighlighted,0,0);
+      text('China',880,150)
       if(mouseIsPressed && keyIsDown(32) == false){
         print("china")
         flagChosen = "China"
@@ -509,6 +516,7 @@ function draw() {
     drawSprite(australiaBlock1);
     if(pointer.overlap(australiaBlock1) && flagChosenBool == false){
       image(australiaHighlighted,0,0)
+      text('Australia',970,340)
       if(mouseIsPressed && keyIsDown(32) == false){
         print("australia")
         flagChosen = "Australia"
@@ -524,6 +532,7 @@ function draw() {
     indiaGroup.add(indiaBlock2)
     if(pointer.overlap(indiaGroup) && flagChosenBool == false){
       image(indiaHighlighted,0,0)
+      image(indiaTag,780,250)
       if(mouseIsPressed && keyIsDown(32) == false){
         print("india")
         flagChosen = "India"
@@ -535,6 +544,7 @@ function draw() {
     drawSprite(egyptBlock1)
     if(pointer.overlap(egyptBlock1) && flagChosenBool == false){
       image(egyptHighlighted,0,0)
+      image(egyptTag,695,180)
       if(mouseIsPressed && keyIsDown(32) == false){
         print("egypt")
         flagChosen = "Egypt"
@@ -546,6 +556,7 @@ function draw() {
     drawSprite(ethiopiaBlock1)
     if(pointer.overlap(ethiopiaBlock1) && flagChosenBool == false){
       image(ethiopiaHighlighted,0,0)
+      image(ethiopiaTag,730,240)
       if(mouseIsPressed && keyIsDown(32) == false){
         print("ethiopia")
         flagChosen = "Ethiopia"
