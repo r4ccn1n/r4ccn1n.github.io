@@ -487,7 +487,7 @@ function draw() {
    //var correctFlag = flagDict.flag;
    //picking which gender to draw
    //text('flag: '+correctFlag,500,400);
-   text('mouseY:'+mouseY+' mouseX: '+mouseX,500,425);
+   //text('mouseY:'+mouseY+' mouseX: '+mouseX,500,425);
    //text('games completed: '+gamesCompleted,500,375) 
    ///text('Gender numba: '+maleOrFemale,500,475);
    //text('Ethnicity numba: '+astroEthnicity,500,450);
