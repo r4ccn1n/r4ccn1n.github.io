@@ -706,7 +706,7 @@ function draw() {
           correctSound.play()
          sfxPlayed = true
         }
-        text("correct! the country was: "+flag.name+" press SPACE to continue",300,300);
+        text("correct! the country was: "+flag.name+" press SPACE to continue",450,425);
       }
       if(flagChosen != correctFlag){
         correct = false
@@ -715,7 +715,7 @@ function draw() {
          sfxPlayed = true
         }
         image(countryUserSelected,0,0);
-        text("incorrect, the correct country was: "+flag.name+" press SPACE to continue",300,300);
+        text("incorrect, the correct country was: "+flag.name+" press SPACE to continue",450,425);
       }
       
       
