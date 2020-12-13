@@ -151,7 +151,6 @@ var bgmusicPlayed = false
 var menuMusicPlayed = false
 var tutMusicPlayed = false
 
-
 function preload() {
   
   femaleAstronaut1 = loadImage('assets/femaleAstronaut1.png');
